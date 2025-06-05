@@ -8,6 +8,7 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
+import { Link } from "react-router";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -42,7 +43,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+      <div>
+        <nav style={{ padding: "1rem", borderBottom: "1px solid #ccc" }}>
+          <Link to="/" style={{ marginRight: "1rem" }}>Accueil</Link>
+          <Link to="/pokemon">Pokémons</Link>
+        </nav>
+        <Outlet />
+      </div>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
